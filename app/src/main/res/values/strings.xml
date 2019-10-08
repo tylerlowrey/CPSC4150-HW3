@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">One-HW3</string>
+    <string name="details_weather_title">Weather</string>
+    <string name="details_temperature_title">Temperature</string>
+    <string name="details_precipitation_title">Precipitation</string>
 </resources>

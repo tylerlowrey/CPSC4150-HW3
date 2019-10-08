@@ -12,4 +12,8 @@
         <item name="android:background">#4DBBFF</item>
     </style>
 
+    <style name="details_table_layout">
+        <item name="android:background">#FFFFFF</item>
+    </style>
+
 </resources>
