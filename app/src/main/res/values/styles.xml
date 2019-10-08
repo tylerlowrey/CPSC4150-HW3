@@ -6,8 +6,29 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
-    <style name="MainActivityBackground">
+    <style name="main_background">
         <item name="android:background">#4DBBFF</item>
+    </style>
+
+    <style name="details_background">
+        <item name="android:background">#4DBBFF</item>
+    </style>
+
+    <style name="details_table_layout">
+        <item name="android:background">@drawable/details_table_shape_bg</item>
+    </style>
+
+    <style name="details_table_cell_left">
+        <item name="android:paddingLeft">20dp</item>
+        <item name="android:paddingRight">50dp</item>
+        <item name="android:paddingVertical">5dp</item>
+        <item name="android:textSize">20sp</item>
+    </style>
+
+    <style name="details_table_cell_right">
+        <item name="android:paddingHorizontal">20dp</item>
+        <item name="android:paddingVertical">8dp</item>
+        <item name="android:textSize">20sp</item>
     </style>
 
 </resources>

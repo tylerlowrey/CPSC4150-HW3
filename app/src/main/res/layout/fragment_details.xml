@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    style="@style/details_background">
+    <!-- Weather Type Image -->
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:orientation="vertical"
+        >
+
+        <ImageView
+            android:id="@+id/details_weather_image"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:src="@drawable/test_weather_image"
+            android:layout_marginBottom="50dp"
+            android:layout_gravity="center_horizontal"
+            android:contentDescription="Current Weather"
+            />
+
+        <!-- TextView of name of location -->
+        <TextView
+            android:id="@+id/details_location_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Clemson"
+            android:gravity="center_horizontal"
+            android:layout_marginBottom="50dp"
+            android:textSize="30dp"
+            android:textColor="#FFF"
+            />
+
+        <!-- Extended weather details -->
+        <TableLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/details_table_layout"
+            >
+            <TableRow>
+                <TextView
+                    android:id="@+id/details_weather_title"
+                    android:gravity="left"
+                    android:text="@string/details_weather_title"
+                    style="@style/details_table_cell_left"
+                    />
+                <TextView
+                    android:id="@+id/details_weather_content"
+                    android:gravity="right"
+                    android:text="Test"
+                    style="@style/details_table_cell_right"
+                    />
+            </TableRow>
+            <TableRow>
+                <TextView
+                    android:id="@+id/details_temperature_title"
+                    android:gravity="left"
+                    android:text="@string/details_temperature_title"
+                    style="@style/details_table_cell_left"
+                    />
+                <TextView
+                    android:id="@+id/details_temperature_content"
+                    android:gravity="right"
+                    android:text="Test"
+                    style="@style/details_table_cell_right"
+                    />
+            </TableRow>
+            <TableRow>
+                <TextView
+                    android:id="@+id/details_precipitation_title"
+                    android:gravity="left"
+                    android:text="@string/details_precipitation_title"
+                    style="@style/details_table_cell_left"
+                    />
+                <TextView
+                    android:id="@+id/details_precipitation_content"
+                    android:gravity="right"
+                    android:text="Test"
+                    style="@style/details_table_cell_right"
+                    />
+            </TableRow>
+        </TableLayout>
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
