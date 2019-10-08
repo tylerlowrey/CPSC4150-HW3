@@ -5,14 +5,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    style="@style/MainActivityBackground"
-    tools:context=".MainActivity">
+    tools:context=".WeatherDetailsActivity"
+    >
 
     <fragment
         android:name="com.tylerlowrey.one_hw3.CityListFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/CityListFragment"
+        android:id="@+id/WeatherDetailsFragment"
         >
     </fragment>
 
