@@ -22,7 +22,8 @@ public class DetailsFragment extends Fragment
         double cityLatitude = args.getDouble("latitude");
         double cityLongitude = args.getDouble("longitude");
 
-        //TODO: Pull weather conditions from model
+        //TODO: Update the Details Fragment View
+
         //TODO: loadingWeatherToast.cancel()   <- check to see if this doesnt throw error
 
         return inflater.inflate(R.layout.fragment_details_land_test, container, false);

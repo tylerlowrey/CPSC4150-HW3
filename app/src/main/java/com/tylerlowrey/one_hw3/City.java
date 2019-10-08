@@ -41,6 +41,8 @@ public class City {
 
         // Create instances of cities in ArrayList container
         ArrayList<City> cityList = new ArrayList<>();
+
+        //TODO: Add latitude and Longitude to cities
         City clemson = new City("Clemson");
         City greenville = new City("Greenville");
         City charlotte = new City("Charlotte");

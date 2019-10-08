@@ -11,5 +11,7 @@ public class WeatherDetailsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_weather_details);
+
+        //TODO: move necessary city info (lat, long, name) into fragment
     }
 }

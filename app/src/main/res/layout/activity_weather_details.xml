@@ -9,10 +9,10 @@
     >
 
     <fragment
-        android:name="com.tylerlowrey.one_hw3.CityListFragment"
+        android:name="com.tylerlowrey.one_hw3.DetailsFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/WeatherDetailsFragment"
+        android:id="@+id/details_fragment"
         >
     </fragment>
 

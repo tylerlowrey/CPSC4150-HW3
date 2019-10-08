@@ -35,14 +35,6 @@ public class CityListFragment extends Fragment {
         return view;
     }
 
-    private View.OnClickListener buttonClickListener = new View.OnClickListener() {
-        @Override
-        public void onClick(View view) {
-
-            // TODO: When a button is pressed, redirect to the WeatherDetailsActivity and
-        }
-    };
-
     private class CityHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         private City currentCity;
         private TextView cityTextView;
@@ -64,9 +56,11 @@ public class CityListFragment extends Fragment {
             Bundle cityInfo = new Bundle();
             cityInfo.putString("name", currentCity.getName());
             /*
-            cityInfo.putDouble("latitude", );
-            cityInfo.putDouble("longitude", );
+            cityInfo.putDouble("latitude", currentCity.getLatitude());
+            cityInfo.putDouble("longitude", currentCity.getLongitude());
              */
+
+            //TODO: create intent and send to weather details activity
         }
     }
 
