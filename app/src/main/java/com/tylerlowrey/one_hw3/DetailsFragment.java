@@ -18,9 +18,10 @@ public class DetailsFragment extends Fragment
         loadingWeatherToast.show();
 
         Bundle args = getArguments();
-        String cityName = args.getString("name");
-        double cityLatitude = args.getDouble("latitude");
-        double cityLongitude = args.getDouble("longitude");
+
+        //String cityName = args.getString("name");
+        //double cityLatitude = args.getDouble("latitude");
+        //double cityLongitude = args.getDouble("longitude");
 
         //TODO: Update the Details Fragment View
 
