@@ -3,4 +3,9 @@
     <string name="details_weather_title">Weather</string>
     <string name="details_temperature_title">Temperature</string>
     <string name="details_precipitation_title">Precipitation</string>
+    <string name="weather_data_not_found">Error: Weather data was not found</string>
+    <string name="weather_data_loading">Grabbing Weather Data, One Moment Please</string>
+    <string name="details_default_value">N/A</string>
+    <string name="temperature_unit">°F</string>
+    <string name="details_default_location_name">Location</string>
 </resources>

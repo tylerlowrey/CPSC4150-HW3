@@ -8,36 +8,44 @@
     <!-- Weather Type Image -->
 
     <LinearLayout
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         android:orientation="vertical"
+        android:layout_gravity="center"
         >
 
-        <ImageView
-            android:id="@+id/details_weather_image"
-            android:layout_width="150dp"
-            android:layout_height="150dp"
-            android:src="@drawable/test_weather_image"
-            android:layout_marginBottom="50dp"
-            android:layout_gravity="center_horizontal"
-            android:contentDescription="Current Weather"
-            />
-
-        <!-- TextView of name of location -->
-        <TextView
-            android:id="@+id/details_location_name"
-            android:layout_width="match_parent"
+        <LinearLayout
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/details_default_location_name"
-            android:gravity="center_horizontal"
-            android:layout_marginBottom="50dp"
-            android:textSize="30dp"
-            android:textColor="#FFF"
-            />
+            android:layout_marginBottom="20dp"
+        >
+            <ImageView
+                android:id="@+id/details_weather_image"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:src="@drawable/default_weather_icon"
+                android:layout_marginRight="20dp"
+                android:layout_gravity="center_horizontal"
+                android:contentDescription="Current Weather"
+                />
+
+            <!-- TextView of name of location -->
+            <TextView
+                android:id="@+id/details_location_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Landscape"
+                android:gravity="center_horizontal"
+                android:layout_marginBottom="50dp"
+                android:textSize="30dp"
+                android:textColor="#FFF"
+                />
+        </LinearLayout>
+
 
         <!-- Extended weather details -->
         <TableLayout
