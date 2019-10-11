@@ -88,7 +88,7 @@ public class MainActivity extends AppCompatActivity implements CityListFragment.
      */
     public void backClicked(View v)
     {
-        Fragment cityListFragment = CityListFragment.newInstance(currentCity);
+        Fragment cityListFragment = CityListFragment.newInstance();
         getSupportFragmentManager().beginTransaction()
                 .replace(R.id.list_fragment_container, cityListFragment)
                 .commit();
