@@ -10,4 +10,5 @@
     <string name="details_default_location_name">Location</string>
     <string name="placeholder">Placeholder</string>
     <string name="current_weather">Current Weather Icon</string>
+    <string name="back_button_returns_to_list_of_cities">Back button - returns to List of Cities</string>
 </resources>

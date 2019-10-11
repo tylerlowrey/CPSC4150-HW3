@@ -12,8 +12,8 @@ import android.view.View;
  *                fragments are displayed, when they are replaced, and what to do when they are
  *                clicked on.
  *
- * Zybooks Credit: the setup and execution of FragmentTransactions found in each of the methods
- *                 below is modified from the Zybooks Ch5 Fragments - Figure 5.3.2 example.
+ * Zybooks Reference: the setup and execution of FragmentTransactions found in each of the methods
+ *                    below is modified from the Zybooks Ch5 Fragments - Figure 5.3.2 example.
  */
 public class MainActivity extends AppCompatActivity implements CityListFragment.OnCitySelectedListener{
     private City currentCity;
