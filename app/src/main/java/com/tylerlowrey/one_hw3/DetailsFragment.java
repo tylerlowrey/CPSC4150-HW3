@@ -79,6 +79,8 @@ public class DetailsFragment extends Fragment
      *  4 - Sets the view elements to display the grabbed weather data
      *
      * @return - A completed View with Weather data populated
+     *
+     * Volley API code is adapted from Zybooks 6.9.4
      */
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle saveInstanceState)
@@ -138,6 +140,9 @@ public class DetailsFragment extends Fragment
                 "https://api.darksky.net/forecast/%s/%f,%f?exclude=minutely,hourly,daily,alerts&units=us",
                 apiKey, cityLatitude, cityLongitude);
 
+
+        //-- Adapted from Zybooks 6.9.4 --
+
         // Create a new RequestQueue
         RequestQueue queue = Volley.newRequestQueue(this.context);
 
@@ -180,6 +185,8 @@ public class DetailsFragment extends Fragment
 
         // Add the request to the RequestQueue
         queue.add(requestObj);
+
+        
         return view;
     }   //end onCreateView
 

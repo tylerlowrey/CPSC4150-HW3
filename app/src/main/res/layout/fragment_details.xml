@@ -35,10 +35,10 @@
             android:id="@+id/details_weather_image"
             android:layout_width="150dp"
             android:layout_height="150dp"
-            android:src="@drawable/test_weather_image"
+            android:src="@drawable/default_weather_icon"
             android:layout_marginBottom="50dp"
             android:layout_gravity="center_horizontal"
-            android:contentDescription="Current Weather"
+            android:contentDescription="@string/current_weather"
             />
 
         <!-- TextView of name of location -->
