@@ -34,7 +34,7 @@ public class CityListFragment extends Fragment {
     /**
      * Functionality: Interface implemented by MainActivity to handle when a city is selected
      * PreConditions: none
-     * PostConditions: on CitySelected from MainActivity
+     * PostConditions: onCitySelected from MainActivity called
      */
     public interface OnCitySelectedListener {
         void onCitySelected(City city);
@@ -42,9 +42,10 @@ public class CityListFragment extends Fragment {
     private OnCitySelectedListener mListener;
 
     /**
-     * Functionality:
-     * PreConditions:
-     * PostConditions:
+     * Functionality: MainActivity begins observing CityListFragment for changes
+     * PreConditions: context cannot be null,
+     * PostConditions: mListener beccomes an OnCitySelectedListener and listens for changes to the
+     *                 CityListFragment
      * Zybooks Reference: onAttach code was pulled and modified from Zybooks Figure 5.4.2
      */
     @Override
@@ -59,9 +60,9 @@ public class CityListFragment extends Fragment {
     }
 
     /**
-     * Functionality:
-     * PreConditions:
-     * PostConditions:
+     * Functionality: MainActivity stops observing CityListFragment
+     * PreConditions: onAttach() must be called on MainActivity's context
+     * PostConditions: mListener is released,
      * Zybooks Reference: onAttach code was pulled and modified from Zybooks Figure 5.4.2
      */
     @Override
@@ -71,9 +72,11 @@ public class CityListFragment extends Fragment {
     }
 
     /**
-     * Functionality:
-     * PreConditions:
-     * PostConditions:
+     * Functionality: Creates RecyclerView with adapter and ArrayList of Cities
+     * PreConditions: MainActivity must create an instance of CityListFragment and inflate it into
+     *                its FrameLayout
+     * PostConditions: CityListFragment displays a scrollable list of cities that the user can
+     *                  interact with
      */
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -94,7 +97,8 @@ public class CityListFragment extends Fragment {
     }   //end onCreateView
 
     /**
-     * Functionality:
+     * Functionality: Inflates the layout file for each city in the RecyclerView
+     * Zybooks Reference:
      */
     private class CityHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         private City currentCity;
@@ -102,8 +106,8 @@ public class CityListFragment extends Fragment {
 
         /**
          * Functionality: constructor for the CityHolder class
-         * PreConditions:
-         * PostConditions:
+         * PreConditions: inflater must not be null, parent must not be null
+         * PostConditions: CityHolder is initialized
          */
         public CityHolder(LayoutInflater inflater, ViewGroup parent) {
             super(inflater.inflate(R.layout.list_item_city, parent, false));
