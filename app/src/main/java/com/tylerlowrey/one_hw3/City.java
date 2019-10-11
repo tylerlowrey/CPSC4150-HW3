@@ -4,49 +4,34 @@ import java.util.ArrayList;
 
 public class City {
     private String name;
-    private String weatherCondition;
-    private int temperature;
     private double latitude;
     private double longitude;
 
-
-    /*
-     * Functionality: Constructor with arguements to create City with values
-     * PreConditions:
-     * PostConditions:
+    /**
+     * Functionality: Constructor with arguments to create City with values
+     * PreConditions: cityName must be a valid string, latitude and longitude must be valid doubles
+     * PostConditions: instance of City is created and private variables are set
      */
     public City (String cityName, double latitude, double longitude){
         name = cityName;
-        weatherCondition = "unknown";
-        temperature = 1000;
         this.latitude = latitude;
         this.longitude = longitude;
     }   //end of constructor
 
-
-    // --------------------- Getters and Setters for class private variables ----------------//
-    /*
-     * Functionality:
-     * PreConditions:
-     * PostConditions:
+    /** --------------------- Getters and Setters for class private variables ----------------
+     * Functionality: get and set private variables for City Class
+     * PreConditions: City class must be initialized
+     * PostConditions: a specific private variable is either returned to the user, or set to a value
      */
     public String getName() { return name; }
     public void setName(String name) { this.name = name; }
-    public int getTemperature() { return temperature; }
-    public void setTemperature(int temperature) { this.temperature = temperature; }
     public double getLatitude() { return latitude; }
-    public void setLatitude(double latitude) { this.latitude = latitude; }
     public double getLongitude() { return longitude; }
-    public void setLongitude(double longitude) { this.longitude = longitude; }
-    public String getWeatherCondition() { return weatherCondition; }
-    public void setWeatherCondition(String weatherCondition) {
-        this.weatherCondition = weatherCondition;
-    }   // End of Getters and Setters
 
-    /*
+    /**
      * Functionality: Creates list of cities and returns them to the fragment for display
-     * PreConditions:
-     * PostConditions:
+     * PreConditions: none
+     * PostConditions: An Array list of already initialized cities is returned
      */
     public static ArrayList<City> createCityList(){
 
@@ -62,10 +47,6 @@ public class City {
         City san_diego = new City("San Diego", 32.715736, -117.161087);
         City columbia = new City("Columbia", 34.0007104, -81.0348144);
         City charleston = new City("Charleston", 32.784618, -79.940918);
-
-        /* ----------------------- QUESTION ---------------------------------- */
-        // DO WE WANT TO PICK SOME CITIES THAT ARE A LITTLE MORE DISPERSED?
-        // SO THAT WE CAN PROVE IT WORKS WITH LATS AND LONGS ALL OVER THE SPECTRUM
 
         // Add cities to container
         cityList.add(clemson);

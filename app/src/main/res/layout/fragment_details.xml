@@ -5,6 +5,19 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     style="@style/details_background">
+
+    <ImageView
+        android:id="@+id/backButton"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:src="?attr/homeAsUpIndicator"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:onClick="backClicked"
+        android:contentDescription="@string/back_button_returns_to_list_of_cities"
+        >
+    </ImageView>
     <!-- Weather Type Image -->
 
     <LinearLayout
@@ -21,10 +34,10 @@
             android:id="@+id/details_weather_image"
             android:layout_width="150dp"
             android:layout_height="150dp"
-            android:src="@drawable/test_weather_image"
+            android:src="@drawable/default_weather_icon"
             android:layout_marginBottom="50dp"
             android:layout_gravity="center_horizontal"
-            android:contentDescription="Current Weather"
+            android:contentDescription="@string/current_weather"
             />
 
         <!-- TextView of name of location -->
@@ -35,7 +48,7 @@
             android:text="@string/details_default_location_name"
             android:gravity="center_horizontal"
             android:layout_marginBottom="50dp"
-            android:textSize="30dp"
+            android:textSize="30sp"
             android:textColor="#FFF"
             />
 

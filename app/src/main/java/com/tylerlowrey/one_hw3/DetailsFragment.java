@@ -12,33 +12,38 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
-
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
-
 import org.json.JSONException;
 import org.json.JSONObject;
-
 import java.util.Locale;
-
 import static com.android.volley.VolleyLog.TAG;
 
+/**
+ * Functionality: Displays Weather data for a selected city from the CityListFragment
+ */
 public class DetailsFragment extends Fragment
 {
-
+    private Context context;
+    private final String unit = "°F";
     private ImageView weatherImageView;
     private TextView locationNameTextView;
     private TextView weatherDetailsTextView;
     private TextView precipitationDetailsTextView;
     private TextView temperatureDetailsTextView;
 
+    /**
+     * Generates a new DetailsFragment populated with the given city data
+     *
+     * @param city - A {@link City} that is populated with the data to be displayed on the returned DetailsFragment
+     * @return - DetailsFragment that was populated with the data from the city parameter
+     */
     public static DetailsFragment newInstance(City city)
     {
         DetailsFragment fragment = new DetailsFragment();
@@ -48,16 +53,44 @@ public class DetailsFragment extends Fragment
         args.putDouble("longitude", city.getLongitude());
         fragment.setArguments(args);
         return fragment;
-    }
+    }   //end DetailsFragment
 
+    /**
+     * Grabs saved instance state information and stores the activity's context which will be used
+     * with Volley
+     *
+     * @param savedInstanceState - Saved state data from a previous state
+     */
+    @Override
+    public void onCreate(Bundle savedInstanceState)
+    {
+        super.onCreate(savedInstanceState);
+        this.context = getActivity();
+    }   //end onCreate
+
+    /**
+     * Performs several steps in order to generate a full view for the user:
+     *  1 - Displays a Toast indicating to the user that weather data is being loaded
+     *  2 - Displays either the fragment_details xml layout or the fragment_detais_land xml layout
+     *      depending on the orientation of the phone
+     *  3 - Grabs weather data based on the specified location
+     *  4 - Sets the view elements to display the grabbed weather data
+     *
+     * @return - A completed View with Weather data populated
+     *
+     * Volley API code is adapted from Zybooks 6.9.4
+     */
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle saveInstanceState)
     {
 
+        //Inform the user that the weather data is being grabbed
+        final Toast loadingWeatherToast = Toast.makeText(getContext(), getString(R.string.weather_data_loading), Toast.LENGTH_SHORT);
+        loadingWeatherToast.show();
+
         View view;
 
         int orientation = getActivity().getResources().getConfiguration().orientation;
-
         if(orientation == Configuration.ORIENTATION_PORTRAIT)
         {
             view = inflater.inflate(R.layout.fragment_details, container, false);
@@ -68,24 +101,21 @@ public class DetailsFragment extends Fragment
             view = inflater.inflate(R.layout.fragment_details_land, container, false);
         }
 
+        //Get references to views that will be edited
         weatherImageView = view.findViewById(R.id.details_weather_image);
         locationNameTextView = view.findViewById(R.id.details_location_name);
         weatherDetailsTextView = view.findViewById(R.id.details_weather_content);
         precipitationDetailsTextView = view.findViewById(R.id.details_precipitation_content);
         temperatureDetailsTextView = view.findViewById(R.id.details_temperature_content);
 
-        final Toast loadingWeatherToast = Toast.makeText(getContext(), getString(R.string.weather_data_loading), Toast.LENGTH_SHORT);
-        loadingWeatherToast.show();
-
         Intent intent = getActivity().getIntent();
-
         Bundle args = intent.getExtras();
-
 
         String cityName = "Charlotte";
         double cityLatitude = 35.227085;
         double cityLongitude = -80.843124;
 
+        //If the user selected a location to view weather for, grab the data for that location
         if(args != null)
         {
             cityName = args.getString("name", "Default");
@@ -100,18 +130,19 @@ public class DetailsFragment extends Fragment
             cityLongitude = args.getDouble("longitude");
         }
 
-
-
         locationNameTextView.setText(cityName);
-
         String apiKey = "e6fc050255e1f924eae6e045faa9bc36";
 
+        //Grab the weather data for the corresponding latitude and longitude (in US units)
         String darkSkyAPIURL = String.format(Locale.ENGLISH,
                 "https://api.darksky.net/forecast/%s/%f,%f?exclude=minutely,hourly,daily,alerts&units=us",
                 apiKey, cityLatitude, cityLongitude);
 
+
+        //-- Adapted from Zybooks 6.9.4 --
+
         // Create a new RequestQueue
-        RequestQueue queue = Volley.newRequestQueue(getContext());
+        RequestQueue queue = Volley.newRequestQueue(this.context);
 
         // Create a new JsonObjectRequest that requests available subjects
         JsonObjectRequest requestObj = new JsonObjectRequest
@@ -129,10 +160,8 @@ public class DetailsFragment extends Fragment
 
                             weatherDetailsTextView.setText(currentWeatherSummary);
                             precipitationDetailsTextView.setText(currentWeatherPrecipitation);
-                            temperatureDetailsTextView.setText(currentTemperature + " " + getString(R.string.temperature_unit));
-
+                            temperatureDetailsTextView.setText(String.format("%s %s", currentTemperature, unit));
                             weatherImageView.setImageDrawable(getDrawableWeatherIcon(iconType));
-                            //loadingWeatherToast.cancel();
                         }
                         catch (JSONException e)
                         {
@@ -141,10 +170,7 @@ public class DetailsFragment extends Fragment
                             loadingWeatherToast.show();
                             Log.e(TAG, "Bad JSON response: " + response.toString());
                         }
-
-
-
-                    }
+                    }   //end onResponse
                 }, new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
@@ -152,16 +178,15 @@ public class DetailsFragment extends Fragment
                                 getString(R.string.weather_data_not_found), Toast.LENGTH_LONG);
                         loadingWeatherToast.show();
                         Log.e(TAG, "Error: " + error.toString());
-                    }
+                    }   //end onErrorResponse
                 });
 
         // Add the request to the RequestQueue
         queue.add(requestObj);
 
-
-
+        
         return view;
-    }
+    }   //end onCreateView
 
     /**
      * Returns a {@link android.graphics.drawable.Drawable} that corresponds to the weather icon string
@@ -176,7 +201,7 @@ public class DetailsFragment extends Fragment
      */
     private Drawable getDrawableWeatherIcon(String icon)
     {
-        Context context = getContext();
+        Context context = this.context;
         switch (icon)
         {
             case "clear-day":
@@ -199,7 +224,6 @@ public class DetailsFragment extends Fragment
                 return ContextCompat.getDrawable(context, R.drawable.clear_night_weather_icon);
             default:
                 return ContextCompat.getDrawable(context, R.drawable.default_weather_icon);
-        }
-    }
-
-}
+        }   //end switch statement
+    }   //end getDrawableWeatherIcon
+}   //end DetailsFragment Class
