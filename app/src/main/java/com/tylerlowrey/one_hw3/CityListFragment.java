@@ -25,34 +25,27 @@ public class CityListFragment extends Fragment {
     public CityListFragment() { }
 
     /**
-     * Functionality:
-     * PreConditions:
-     * PostConditions:
+     * Functionality: returns a new instance of a CityListFragment
+     * PreConditions: none
+     * PostConditions: a new CityListFragment instance is created and returned
      */
     public static CityListFragment newInstance() { return new CityListFragment(); }
 
     /**
-     * Functionality:
-     * PreConditions:
-     * PostConditions:
+     * Functionality: Interface implemented by MainActivity to handle when a city is selected
+     * PreConditions: none
+     * PostConditions: on CitySelected from MainActivity
      */
-    // For the activity to implement
     public interface OnCitySelectedListener {
         void onCitySelected(City city);
     }
-
-    /**
-     * Functionality:
-     * PreConditions:
-     * PostConditions:
-     */
-    // Reference to the activity
     private OnCitySelectedListener mListener;
 
     /**
      * Functionality:
      * PreConditions:
      * PostConditions:
+     * Zybooks Reference: onAttach code was pulled and modified from Zybooks Figure 5.4.2
      */
     @Override
     public void onAttach(Context context) {
@@ -61,7 +54,7 @@ public class CityListFragment extends Fragment {
             mListener = (OnCitySelectedListener) context;
         } else {
             throw new RuntimeException(context.toString()
-                    + " must implement OnBandSelectedListener");
+                    + " must implement OnCitySelectedListener");
         }
     }
 
@@ -69,6 +62,7 @@ public class CityListFragment extends Fragment {
      * Functionality:
      * PreConditions:
      * PostConditions:
+     * Zybooks Reference: onAttach code was pulled and modified from Zybooks Figure 5.4.2
      */
     @Override
     public void onDetach() {

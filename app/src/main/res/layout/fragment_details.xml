@@ -15,8 +15,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         android:onClick="backClicked"
-
-        android:contentDescription="Back button - returns to List of Cities"
+        android:contentDescription="@string/back_button_returns_to_list_of_cities"
         >
     </ImageView>
     <!-- Weather Type Image -->
@@ -49,7 +48,7 @@
             android:text="@string/details_default_location_name"
             android:gravity="center_horizontal"
             android:layout_marginBottom="50dp"
-            android:textSize="30dp"
+            android:textSize="30sp"
             android:textColor="#FFF"
             />
 
