@@ -32,7 +32,6 @@ import static com.android.volley.VolleyLog.TAG;
 
 public class DetailsFragment extends Fragment
 {
-
     private Context context;
     private final String unit = "°F";
     private ImageView weatherImageView;
@@ -92,7 +91,6 @@ public class DetailsFragment extends Fragment
         View view;
 
         int orientation = getActivity().getResources().getConfiguration().orientation;
-
         if(orientation == Configuration.ORIENTATION_PORTRAIT)
         {
             view = inflater.inflate(R.layout.fragment_details, container, false);
@@ -111,7 +109,6 @@ public class DetailsFragment extends Fragment
         temperatureDetailsTextView = view.findViewById(R.id.details_temperature_content);
 
         Intent intent = getActivity().getIntent();
-
         Bundle args = intent.getExtras();
 
         String cityName = "Charlotte";
@@ -133,10 +130,7 @@ public class DetailsFragment extends Fragment
             cityLongitude = args.getDouble("longitude");
         }
 
-
-
         locationNameTextView.setText(cityName);
-
         String apiKey = "e6fc050255e1f924eae6e045faa9bc36";
 
         //Grab the weather data for the corresponding latitude and longitude (in US units)
@@ -164,7 +158,6 @@ public class DetailsFragment extends Fragment
                             weatherDetailsTextView.setText(currentWeatherSummary);
                             precipitationDetailsTextView.setText(currentWeatherPrecipitation);
                             temperatureDetailsTextView.setText(currentTemperature + " " + unit);
-
                             weatherImageView.setImageDrawable(getDrawableWeatherIcon(iconType));
                         }
                         catch (JSONException e)
@@ -174,7 +167,7 @@ public class DetailsFragment extends Fragment
                             loadingWeatherToast.show();
                             Log.e(TAG, "Bad JSON response: " + response.toString());
                         }
-                    }
+                    }   //end onResponse
                 }, new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
@@ -187,11 +180,8 @@ public class DetailsFragment extends Fragment
 
         // Add the request to the RequestQueue
         queue.add(requestObj);
-
-
-
         return view;
-    }
+    }   //end onCreateView
 
     /**
      * Returns a {@link android.graphics.drawable.Drawable} that corresponds to the weather icon string
@@ -229,7 +219,6 @@ public class DetailsFragment extends Fragment
                 return ContextCompat.getDrawable(context, R.drawable.clear_night_weather_icon);
             default:
                 return ContextCompat.getDrawable(context, R.drawable.default_weather_icon);
-        }
-    }
-
-}
+        }   //end switch statement
+    }   //end getDrawableWeatherIcon
+}   //end DetailsFragment Class
