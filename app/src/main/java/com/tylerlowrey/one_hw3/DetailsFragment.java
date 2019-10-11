@@ -12,24 +12,22 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
-
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
-
 import org.json.JSONException;
 import org.json.JSONObject;
-
 import java.util.Locale;
-
 import static com.android.volley.VolleyLog.TAG;
 
+/**
+ * Functionality:
+ */
 public class DetailsFragment extends Fragment
 {
     private Context context;
@@ -55,7 +53,7 @@ public class DetailsFragment extends Fragment
         args.putDouble("longitude", city.getLongitude());
         fragment.setArguments(args);
         return fragment;
-    }
+    }   //end DetailsFragment
 
     /**
      * Grabs saved instance state information and stores the activity's context which will be used
@@ -68,7 +66,7 @@ public class DetailsFragment extends Fragment
     {
         super.onCreate(savedInstanceState);
         this.context = getActivity();
-    }
+    }   //end onCreate
 
     /**
      * Performs several steps in order to generate a full view for the user:
@@ -175,7 +173,7 @@ public class DetailsFragment extends Fragment
                                 getString(R.string.weather_data_not_found), Toast.LENGTH_LONG);
                         loadingWeatherToast.show();
                         Log.e(TAG, "Error: " + error.toString());
-                    }
+                    }   //end onErrorResponse
                 });
 
         // Add the request to the RequestQueue

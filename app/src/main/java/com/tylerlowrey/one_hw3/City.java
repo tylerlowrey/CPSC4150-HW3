@@ -7,7 +7,7 @@ public class City {
     private double latitude;
     private double longitude;
 
-    /*
+    /**
      * Functionality: Constructor with arguments to create City with values
      * PreConditions: cityName must be a valid string, latitude and longitude must be valid doubles
      * PostConditions: instance of City is created and private variables are set
@@ -18,9 +18,7 @@ public class City {
         this.longitude = longitude;
     }   //end of constructor
 
-
-
-    /* --------------------- Getters and Setters for class private variables ----------------
+    /** --------------------- Getters and Setters for class private variables ----------------
      * Functionality: get and set private variables for City Class
      * PreConditions: City class must be initialized
      * PostConditions: a specific private variable is either returned to the user, or set to a value
@@ -30,8 +28,7 @@ public class City {
     public double getLatitude() { return latitude; }
     public double getLongitude() { return longitude; }
 
-
-    /*
+    /**
      * Functionality: Creates list of cities and returns them to the fragment for display
      * PreConditions: none
      * PostConditions: An Array list of already initialized cities is returned
