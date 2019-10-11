@@ -98,7 +98,8 @@ public class CityListFragment extends Fragment {
 
     /**
      * Functionality: Inflates the layout file for each city in the RecyclerView
-     * Zybooks Reference:
+     * Zybooks Reference: Methods inside of CityHolder was pulled and modified from Zybooks ch5 -
+     *                    Figure 5.5.4
      */
     private class CityHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         private City currentCity;
@@ -138,6 +139,8 @@ public class CityListFragment extends Fragment {
 
     /**
      * Functionality: Serves as an Adapter for a RecyclerView
+     * Zybooks Reference: Methods inside of CityAdapter was pulled and modified from Zybooks ch5 -
+     *                    Figure 5.5.4
      */
     private class CityAdapter extends RecyclerView.Adapter<CityHolder> {
         private List<City> cities;
