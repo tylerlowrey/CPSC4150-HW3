@@ -59,6 +59,13 @@ public class DetailsFragment extends Fragment
         this.context = getActivity();
     }
 
+    /**
+     *
+     * @param inflater
+     * @param container
+     * @param saveInstanceState
+     * @return
+     */
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle saveInstanceState)
     {

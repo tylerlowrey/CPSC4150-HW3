@@ -58,13 +58,6 @@ public class MainActivity extends AppCompatActivity implements CityListFragment.
             getSupportFragmentManager().beginTransaction()
                     .replace(R.id.list_fragment_container, detailsFragment)
                     .commit();
-            /*
-            Intent intent = new Intent(this, WeatherDetailsActivity.class);
-            intent.putExtra("name", currentCity.getName());
-            intent.putExtra("latitude", currentCity.getLatitude());
-            intent.putExtra("longitude", currentCity.getLongitude());
-            startActivity(intent);
-             */
         }
         else
         {
