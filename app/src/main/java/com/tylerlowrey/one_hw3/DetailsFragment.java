@@ -160,7 +160,7 @@ public class DetailsFragment extends Fragment
 
                             weatherDetailsTextView.setText(currentWeatherSummary);
                             precipitationDetailsTextView.setText(currentWeatherPrecipitation);
-                            temperatureDetailsTextView.setText(currentTemperature + " " + unit);
+                            temperatureDetailsTextView.setText(String.format("%s %s", currentTemperature, unit));
                             weatherImageView.setImageDrawable(getDrawableWeatherIcon(iconType));
                         }
                         catch (JSONException e)
