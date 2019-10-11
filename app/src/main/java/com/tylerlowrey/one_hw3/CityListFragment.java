@@ -20,7 +20,7 @@ public class CityListFragment extends Fragment {
     /**
      * Functionality: Required empty public constructor
      * PreConditions: None
-     * PostConditions: None
+     * PostConditions: CityListFragment is constructed
      */
     public CityListFragment() { }
 
@@ -29,7 +29,7 @@ public class CityListFragment extends Fragment {
      * PreConditions:
      * PostConditions:
      */
-    public static CityListFragment newInstance(City city) { return new CityListFragment(); }
+    public static CityListFragment newInstance() { return new CityListFragment(); }
 
     /**
      * Functionality:
