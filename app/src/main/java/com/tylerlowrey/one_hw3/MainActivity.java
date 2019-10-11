@@ -7,7 +7,7 @@ import android.content.res.Configuration;
 import android.os.Bundle;
 import android.view.View;
 
-/*
+/**
  * Functionality: MainActivity hosts the fragments that drive this application. It determines when
  *                fragments are displayed, when they are replaced, and what to do when they are
  *                clicked on.
@@ -18,7 +18,7 @@ import android.view.View;
 public class MainActivity extends AppCompatActivity implements CityListFragment.OnCitySelectedListener{
     private City currentCity;
 
-    /*
+    /**
      * Functionality: Determines orientation of application and inflates the proper fragment
      * PreConditions: none
      * PostConditions: Main Activity receives its layout file, and instructions on which fragments
@@ -49,7 +49,7 @@ public class MainActivity extends AppCompatActivity implements CityListFragment.
         }
     }   //end onCreate
 
-    /*
+    /**
      * Functionality: Determines which container to display the detailsFragment in
      * PreConditions: city must not be null
      * PostConditions: details fragment replaces either the list_fragment_container or the
@@ -78,7 +78,7 @@ public class MainActivity extends AppCompatActivity implements CityListFragment.
         }
     }   //end onCitySelected
 
-    /*
+    /**
      * Functionality: Returns the user to the CityListFragment to select a different city
      * PreConditions: View v must not be null, list_fragment_container must be inflated to the front
      *                of the screen

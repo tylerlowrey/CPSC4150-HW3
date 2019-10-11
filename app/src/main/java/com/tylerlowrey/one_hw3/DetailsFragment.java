@@ -26,7 +26,7 @@ import java.util.Locale;
 import static com.android.volley.VolleyLog.TAG;
 
 /**
- * Functionality:
+ * Functionality: Displays Weather data for a selected city from the CityListFragment
  */
 public class DetailsFragment extends Fragment
 {
