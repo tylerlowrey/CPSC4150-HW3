@@ -118,9 +118,9 @@ public class CityListFragment extends Fragment {
         }   // end CityHolder constructor
 
         /**
-         * Functionality:
-         * PreConditions:
-         * PostConditions:
+         * Functionality: Updates the local currentCity variable to the passed in city variable
+         * PreConditions: city must be initialized and city.getName() != null
+         * PostConditions: citySelected.getText() == city.getName()
          */
         public void bind(City city) {
             currentCity = city;
@@ -128,9 +128,9 @@ public class CityListFragment extends Fragment {
         }   //end bind
 
         /**
-         * Functionality:
-         * PreConditions:
-         * PostConditions:
+         * Functionality: Calls the onCitySelected function of all observers when the CityHolder is clicked
+         * PreConditions: mListener must be initialized
+         * PostConditions: All observers of mListener will have their onCitySelected function called
          */
         @Override
         public void onClick(View view) {
