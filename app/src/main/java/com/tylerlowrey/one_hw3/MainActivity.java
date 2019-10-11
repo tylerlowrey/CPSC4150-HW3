@@ -32,11 +32,18 @@ public class MainActivity extends AppCompatActivity implements CityListFragment.
 
         if (findViewById(R.id.details_fragment) == null)
         {
+
+            Fragment detailsFragment = DetailsFragment.newInstance(currentCity);
+            getSupportFragmentManager().beginTransaction()
+                    .replace(R.id.CityListFragment, detailsFragment)
+                    .commit();
+            /*
             Intent intent = new Intent(this, WeatherDetailsActivity.class);
             intent.putExtra("name", currentCity.getName());
             intent.putExtra("latitude", currentCity.getLatitude());
             intent.putExtra("longitude", currentCity.getLongitude());
             startActivity(intent);
+             */
         }
         else
         {

@@ -3,6 +3,7 @@
     android:orientation="horizontal" android:layout_width="match_parent"
     android:layout_height="match_parent"
     style="@style/details_background">
+
     <fragment android:name="com.tylerlowrey.one_hw3.CityListFragment"
         android:id="@+id/CityListFragmentLand"
         android:layout_width="300dp"
