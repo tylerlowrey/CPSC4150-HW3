@@ -27,6 +27,11 @@ public class CityListFragment extends Fragment {
      */
     public CityListFragment() { }
 
+    public static CityListFragment newInstance(City city)
+    {
+        return new CityListFragment();
+    }
+
 
     // For the activity to implement
     public interface OnCitySelectedListener {

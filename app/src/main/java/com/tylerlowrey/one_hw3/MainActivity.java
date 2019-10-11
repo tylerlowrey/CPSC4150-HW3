@@ -2,10 +2,14 @@ package com.tylerlowrey.one_hw3;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 
 public class MainActivity extends AppCompatActivity implements CityListFragment.OnCitySelectedListener{
     private City currentCity;
@@ -19,23 +23,40 @@ public class MainActivity extends AppCompatActivity implements CityListFragment.
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        // Determine Orientation of application
+        int orientation = getResources().getConfiguration().orientation;
+        if(orientation == Configuration.ORIENTATION_PORTRAIT)
+        {   // Portrait Mode -> Only display City list
+
+            // Begin the transaction
+            FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+            // Replace the contents of the container with the new fragment
+            ft.replace(R.id.list_fragment_container, new CityListFragment());
+            ft.commit();
+        }
+        else
+        {
+            // Begin the transaction
+            FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+            // Replace the contents of the container with the new fragment
+            ft.replace(R.id.list_fragment_container, new CityListFragment());
+            ft.replace(R.id.details_fragment_container, new DetailsFragment());
+            ft.commit();
+        }
     }   //end onCreate
 
 
     public void onCitySelected(City city) {
         currentCity = city;
 
-        //Bundle cityInfo = new Bundle();
-        //cityInfo.putString("name", currentCity.getName());
-        //cityInfo.putDouble("latitude", currentCity.getLatitude());
-        //cityInfo.putDouble("longitude", currentCity.getLongitude());
-
-        if (findViewById(R.id.details_fragment) == null)
+        int orientation = getResources().getConfiguration().orientation;
+        if(orientation == Configuration.ORIENTATION_PORTRAIT)
         {
-
+            // Portrait Mode - replace current fragment with details fragment
             Fragment detailsFragment = DetailsFragment.newInstance(currentCity);
             getSupportFragmentManager().beginTransaction()
-                    .replace(R.id.CityListFragment, detailsFragment)
+                    .replace(R.id.list_fragment_container, detailsFragment)
                     .commit();
             /*
             Intent intent = new Intent(this, WeatherDetailsActivity.class);
@@ -47,12 +68,21 @@ public class MainActivity extends AppCompatActivity implements CityListFragment.
         }
         else
         {
+            // Landscape mode - add fragment to details_fragment_container
             Fragment detailsFragment = DetailsFragment.newInstance(currentCity);
             getSupportFragmentManager().beginTransaction()
-                    .replace(R.id.details_fragment, detailsFragment)
+                    .add(R.id.details_fragment_container, detailsFragment)
                     .commit();
         }
 
 
+    }   //end onCitySelected
+
+    public void backClicked(View v)
+    {
+        Fragment cityListFragment = CityListFragment.newInstance(currentCity);
+        getSupportFragmentManager().beginTransaction()
+                .replace(R.id.list_fragment_container, cityListFragment)
+                .commit();
     }
 }   //end MainActivity class

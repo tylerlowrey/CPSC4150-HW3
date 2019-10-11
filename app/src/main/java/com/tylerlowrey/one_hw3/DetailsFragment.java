@@ -33,6 +33,8 @@ import static com.android.volley.VolleyLog.TAG;
 public class DetailsFragment extends Fragment
 {
 
+    private Context context;
+
     private ImageView weatherImageView;
     private TextView locationNameTextView;
     private TextView weatherDetailsTextView;
@@ -48,6 +50,13 @@ public class DetailsFragment extends Fragment
         args.putDouble("longitude", city.getLongitude());
         fragment.setArguments(args);
         return fragment;
+    }
+
+    @Override
+    public void onCreate(Bundle savedInstanceState)
+    {
+        super.onCreate(savedInstanceState);
+        this.context = getActivity();
     }
 
     @Override
@@ -111,7 +120,7 @@ public class DetailsFragment extends Fragment
                 apiKey, cityLatitude, cityLongitude);
 
         // Create a new RequestQueue
-        RequestQueue queue = Volley.newRequestQueue(getContext());
+        RequestQueue queue = Volley.newRequestQueue(this.context);
 
         // Create a new JsonObjectRequest that requests available subjects
         JsonObjectRequest requestObj = new JsonObjectRequest
@@ -129,7 +138,7 @@ public class DetailsFragment extends Fragment
 
                             weatherDetailsTextView.setText(currentWeatherSummary);
                             precipitationDetailsTextView.setText(currentWeatherPrecipitation);
-                            temperatureDetailsTextView.setText(currentTemperature + " " + getString(R.string.temperature_unit));
+                            temperatureDetailsTextView.setText(currentTemperature + " °F");
 
                             weatherImageView.setImageDrawable(getDrawableWeatherIcon(iconType));
                             //loadingWeatherToast.cancel();
@@ -141,9 +150,6 @@ public class DetailsFragment extends Fragment
                             loadingWeatherToast.show();
                             Log.e(TAG, "Bad JSON response: " + response.toString());
                         }
-
-
-
                     }
                 }, new Response.ErrorListener() {
                     @Override
@@ -176,7 +182,7 @@ public class DetailsFragment extends Fragment
      */
     private Drawable getDrawableWeatherIcon(String icon)
     {
-        Context context = getContext();
+        Context context = this.context;
         switch (icon)
         {
             case "clear-day":
