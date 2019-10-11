@@ -3,6 +3,7 @@ package com.tylerlowrey.one_hw3;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.content.res.Configuration;
 import android.os.Bundle;
 
 public class WeatherDetailsActivity extends AppCompatActivity {
@@ -12,6 +13,5 @@ public class WeatherDetailsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_weather_details);
 
-        //TODO: move necessary city info (lat, long, name) into fragment
     }
 }

@@ -39,6 +39,17 @@ public class DetailsFragment extends Fragment
     private TextView precipitationDetailsTextView;
     private TextView temperatureDetailsTextView;
 
+    public static DetailsFragment newInstance(City city)
+    {
+        DetailsFragment fragment = new DetailsFragment();
+        Bundle args = new Bundle();
+        args.putString("name", city.getName());
+        args.putDouble("latitude", city.getLatitude());
+        args.putDouble("longitude", city.getLongitude());
+        fragment.setArguments(args);
+        return fragment;
+    }
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle saveInstanceState)
     {
@@ -68,11 +79,28 @@ public class DetailsFragment extends Fragment
 
         Intent intent = getActivity().getIntent();
 
-        Bundle args = intent.getExtras().getBundle("bundle");
+        Bundle args = intent.getExtras();
 
-        String cityName = args.getString("name");
-        double cityLatitude = args.getDouble("latitude");
-        double cityLongitude = args.getDouble("longitude");
+
+        String cityName = "Charlotte";
+        double cityLatitude = 35.227085;
+        double cityLongitude = -80.843124;
+
+        if(args != null)
+        {
+            cityName = args.getString("name", "Default");
+            cityLatitude = args.getDouble("latitude");
+            cityLongitude = args.getDouble("longitude");
+        }
+        else if (getArguments() != null)
+        {
+            args = getArguments();
+            cityName = args.getString("name");
+            cityLatitude = args.getDouble("latitude");
+            cityLongitude = args.getDouble("longitude");
+        }
+
+
 
         locationNameTextView.setText(cityName);
 

@@ -4,13 +4,13 @@
     android:layout_height="match_parent"
     style="@style/details_background">
     <fragment android:name="com.tylerlowrey.one_hw3.CityListFragment"
-        android:id="@+id/details_fragment"
-        android:layout_width="wrap_content"
+        android:id="@+id/CityListFragmentLand"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
         />
 
     <fragment android:name="com.tylerlowrey.one_hw3.DetailsFragment"
-        android:id="@+id/_2"
+        android:id="@+id/details_fragment"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         />

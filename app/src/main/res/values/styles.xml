@@ -31,4 +31,11 @@
         <item name="android:textSize">20sp</item>
     </style>
 
+    <style name="city_name_in_list">
+        <item name="android:textSize">@dimen/city_list_text_size</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:background">#4DBBFF</item>
+    </style>
+
+
 </resources>

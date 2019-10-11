@@ -8,4 +8,5 @@
     <string name="details_default_value">N/A</string>
     <string name="temperature_unit">°F</string>
     <string name="details_default_location_name">Location</string>
+    <string name="placeholder">Placeholder</string>
 </resources>
