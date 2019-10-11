@@ -122,25 +122,23 @@ public class CityListFragment extends Fragment {
         }   //end onClick
     }   //end City Holder Class
 
-    /*
-     * Functionality:
-     * PreConditions:
-     * PostConditions:
+    /**
+     * Functionality: Serves as an Adapter for a RecyclerView
      */
     private class CityAdapter extends RecyclerView.Adapter<CityHolder> {
         private List<City> cities;
 
-        /*
+        /**
          * Functionality: Constructor
-         * PreConditions:
-         * PostConditions:
+         * PreConditions: myCities should be a valid List<City> where myCities.size() > 0
+         * PostConditions: this.cities = myCities
          */
         public CityAdapter(List<City> myCities) { cities = myCities; }
 
-        /*
-         * Functionality:
-         * PreConditions:
-         * PostConditions:
+        /**
+         * Functionality: Creates a {@link CityListFragment.CityHolder} and returns it.
+         * PreConditions: parent must be a valid instantiated {@link ViewGroup} object
+         * PostConditions: a valid CityHolder object will be returned
          */
         @Override
         public CityHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -148,23 +146,23 @@ public class CityListFragment extends Fragment {
             return new CityHolder(layoutInflater, parent);
         }   //end onCreateViewHolder
 
-        /*
-         * Functionality:
-         * PreConditions:
-         * PostConditions:
+        /**
+         * Functionality: Calls the bind function of the given{@link CityListFragment.CityHolder},
+         *                passing in the {@link City} that corresponds to the given position
+         * PreConditions: this.cities should be initialized and position < cities.size(), holder
+         *                should be an initialized CityHolder object
+         * PostConditions: holder.bind() will be called with a valid City object
          */
-
-        /* Could be a problem here that we are using int position rather than a name to access a city */
         @Override
         public void onBindViewHolder(CityHolder holder, int position) {
             City city = cities.get(position);
             holder.bind(city);
         }   //end onBindViewHolder
 
-        /*
+        /**
          * Functionality: Returns the number of cities in the recyclerview
-         * PreConditions:
-         * PostConditions:
+         * PreConditions: this.cities should be initialized
+         * PostConditions: getItemCount() = cities.size()
          */
         @Override
         public int getItemCount() {
