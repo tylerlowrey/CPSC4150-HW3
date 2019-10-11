@@ -13,7 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Functionality:
+ * Functionality: Displays a list of cities that the user can interact with to get weather data.
  */
 public class CityListFragment extends Fragment {
 
