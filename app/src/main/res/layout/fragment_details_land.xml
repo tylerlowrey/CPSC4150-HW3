@@ -46,7 +46,6 @@
                 />
         </LinearLayout>
 
-
         <!-- Extended weather details -->
         <TableLayout
             android:layout_width="wrap_content"
@@ -97,5 +96,4 @@
             </TableRow>
         </TableLayout>
     </LinearLayout>
-
 </androidx.constraintlayout.widget.ConstraintLayout>
