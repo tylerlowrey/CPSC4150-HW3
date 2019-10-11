@@ -15,6 +15,9 @@ import android.view.View;
  * Functionality: MainActivity hosts the fragments that drive this application. It determines when
  *                fragments are displayed, when they are replaced, and what to do when they are
  *                clicked on.
+ *
+ * Zybooks Credit: the setup and execution of FragmentTransactions found in each of the methods
+ *                 below is modified from the Zybooks Ch5 Fragments - Figure 5.3.2 example.
  */
 public class MainActivity extends AppCompatActivity implements CityListFragment.OnCitySelectedListener{
     private City currentCity;
@@ -24,6 +27,7 @@ public class MainActivity extends AppCompatActivity implements CityListFragment.
      * PreConditions: none
      * PostConditions: Main Activity receives its layout file, and instructions on which fragments
      *                 to place inside of the frame layouts in main_activity.xml
+     * Zybooks Reference: FragmentTransactions code was pulled and modified from Zybooks Figure 5.3.2
      */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,9 +54,11 @@ public class MainActivity extends AppCompatActivity implements CityListFragment.
     }   //end onCreate
 
     /*
-     * Functionality:
-     * PreConditions:
-     * PostConditions:
+     * Functionality: Determines which container to display the detailsFragment in
+     * PreConditions: city must not be null
+     * PostConditions: details fragment replaces either the list_fragment_container or the
+     *                 details_fragment_container
+     * Zybooks Reference: FragmentTransactions code was pulled and modified from Zybooks Figure 5.3.2
      */
     public void onCitySelected(City city) {
         currentCity = city;
@@ -80,7 +86,9 @@ public class MainActivity extends AppCompatActivity implements CityListFragment.
      * Functionality: Returns the user to the CityListFragment to select a different city
      * PreConditions: View v must not be null, list_fragment_container must be inflated to the front
      *                of the screen
-     * PostConditions: CityListFragment replaces
+     * PostConditions: CityListFragment replaces the DetailsFragment in the list_fragment_container
+     *                 from activity_main.xml
+     * Zybooks Reference: FragmentTransactions code was pulled and modified from Zybooks Figure 5.3.2
      */
     public void backClicked(View v)
     {
