@@ -34,13 +34,19 @@ public class DetailsFragment extends Fragment
 {
 
     private Context context;
-
+    private final String unit = "°F";
     private ImageView weatherImageView;
     private TextView locationNameTextView;
     private TextView weatherDetailsTextView;
     private TextView precipitationDetailsTextView;
     private TextView temperatureDetailsTextView;
 
+    /**
+     * Generates a new DetailsFragment populated with the given city data
+     *
+     * @param city - A {@link City} that is populated with the data to be displayed on the returned DetailsFragment
+     * @return - DetailsFragment that was populated with the data from the city parameter
+     */
     public static DetailsFragment newInstance(City city)
     {
         DetailsFragment fragment = new DetailsFragment();
@@ -52,6 +58,12 @@ public class DetailsFragment extends Fragment
         return fragment;
     }
 
+    /**
+     * Grabs saved instance state information and stores the activity's context which will be used
+     * with Volley
+     *
+     * @param savedInstanceState - Saved state data from a previous state
+     */
     @Override
     public void onCreate(Bundle savedInstanceState)
     {
@@ -60,15 +72,22 @@ public class DetailsFragment extends Fragment
     }
 
     /**
+     * Performs several steps in order to generate a full view for the user:
+     *  1 - Displays a Toast indicating to the user that weather data is being loaded
+     *  2 - Displays either the fragment_details xml layout or the fragment_detais_land xml layout
+     *      depending on the orientation of the phone
+     *  3 - Grabs weather data based on the specified location
+     *  4 - Sets the view elements to display the grabbed weather data
      *
-     * @param inflater
-     * @param container
-     * @param saveInstanceState
-     * @return
+     * @return - A completed View with Weather data populated
      */
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle saveInstanceState)
     {
+
+        //Inform the user that the weather data is being grabbed
+        final Toast loadingWeatherToast = Toast.makeText(getContext(), getString(R.string.weather_data_loading), Toast.LENGTH_SHORT);
+        loadingWeatherToast.show();
 
         View view;
 
@@ -84,24 +103,22 @@ public class DetailsFragment extends Fragment
             view = inflater.inflate(R.layout.fragment_details_land, container, false);
         }
 
+        //Get references to views that will be edited
         weatherImageView = view.findViewById(R.id.details_weather_image);
         locationNameTextView = view.findViewById(R.id.details_location_name);
         weatherDetailsTextView = view.findViewById(R.id.details_weather_content);
         precipitationDetailsTextView = view.findViewById(R.id.details_precipitation_content);
         temperatureDetailsTextView = view.findViewById(R.id.details_temperature_content);
 
-        final Toast loadingWeatherToast = Toast.makeText(getContext(), getString(R.string.weather_data_loading), Toast.LENGTH_SHORT);
-        loadingWeatherToast.show();
-
         Intent intent = getActivity().getIntent();
 
         Bundle args = intent.getExtras();
-
 
         String cityName = "Charlotte";
         double cityLatitude = 35.227085;
         double cityLongitude = -80.843124;
 
+        //If the user selected a location to view weather for, grab the data for that location
         if(args != null)
         {
             cityName = args.getString("name", "Default");
@@ -122,6 +139,7 @@ public class DetailsFragment extends Fragment
 
         String apiKey = "e6fc050255e1f924eae6e045faa9bc36";
 
+        //Grab the weather data for the corresponding latitude and longitude (in US units)
         String darkSkyAPIURL = String.format(Locale.ENGLISH,
                 "https://api.darksky.net/forecast/%s/%f,%f?exclude=minutely,hourly,daily,alerts&units=us",
                 apiKey, cityLatitude, cityLongitude);
@@ -145,10 +163,9 @@ public class DetailsFragment extends Fragment
 
                             weatherDetailsTextView.setText(currentWeatherSummary);
                             precipitationDetailsTextView.setText(currentWeatherPrecipitation);
-                            temperatureDetailsTextView.setText(currentTemperature + " °F");
+                            temperatureDetailsTextView.setText(currentTemperature + " " + unit);
 
                             weatherImageView.setImageDrawable(getDrawableWeatherIcon(iconType));
-                            //loadingWeatherToast.cancel();
                         }
                         catch (JSONException e)
                         {
